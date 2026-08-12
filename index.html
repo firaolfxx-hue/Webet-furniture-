@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>webet | Multi-Functional Furniture & Wood Technology</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* common */
+        .hero-slide {
+            transition: opacity 1s ease-in-out;
+        }
+        .carousel-container {
+            position: relative;
+        }
+        .slide-btn {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .carousel-container:hover .slide-btn {
+            opacity: 1;
+        }
+        .star-btn {
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+        .thumbnail-img {
+            cursor: pointer;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .thumbnail-img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Navigation link styles - always visible */
+        .nav-link {
+            color: #e5e7eb;
+            /* gray-200 */
+            transition: color 0.2s ease, border-color 0.2s ease;
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .nav-link:hover {
+            color: #fbbf24;
+            /* amber-400 */
+        }
+        .nav-link.active-nav {
+            color: #fbbf24;
+            /* amber-400 */
+            border-bottom: 2px solid #fbbf24;
+        }
+        /* Mobile nav spacing */
+        @media (max-width: 640px) {
+            .nav-link {
+                font-size: 0.75rem;
+                /* smaller text on mobile */
+                padding-bottom: 0.15rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased">
+
+    <!-- ========== HEADER ========== -->
+    <header class="sticky top-0 z-50 bg-amber-950/95 backdrop-blur-md shadow-md border-b border-amber-900/50 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center shrink-0" onclick="navigateTo('home')">
+                <img src="https://i.ibb.co/dxc2JhD/1786568123751.png" alt="webet logo" class="h-10 md:h-12 w-auto" />
+            </a>
+
+            <!-- Navigation: always visible -->
+            <nav class="flex items-center space-x-4 sm:space-x-6 lg:space-x-8 font-medium overflow-x-auto">
+                <a href="#home" class="nav-link" data-page="home" data-i18n="nav_home">Home</a>
+                <a href="#products" class="nav-link" data-page="products" data-i18n="nav_products">Our Products</a>
+                <a href="#about" class="nav-link" data-page="about" data-i18n="nav_about">About Us</a>
+                <a href="#contact" class="nav-link" data-page="contact" data-i18n="nav_contact">Contact Us</a>
+            </nav>
+
+            <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+                <button id="langToggleBtn" class="flex items-center gap-1 sm:gap-2 border border-amber-700 bg-amber-900/50 rounded-full px-2.5 sm:px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-amber-200 hover:bg-amber-800/60 transition">
+                    <i class="fa-solid fa-globe text-amber-400"></i>
+                    <span id="currentLangLabel">AM</span>
+                </button>
+                <a href="#contact" class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-lg font-medium transition shadow-sm border border-amber-500/30 text-xs sm:text-sm" data-i18n="nav_explore" onclick="navigateTo('contact')">Inquire Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main>
+
+        <!-- ===== HOME PAGE ===== -->
+        <section id="page-home" class="page-section active">
+            <!-- Hero Slider - all furniture images, no people -->
+            <div class="relative h-[85vh] min-h-[550px] overflow-hidden bg-stone-900">
+                <div id="heroSlider" class="absolute inset-0">
+                    <div class="hero-slide absolute inset-0 bg-cover bg-center opacity-100" style="background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=80');"></div>
+                    <div class="hero-slide absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1920&q=80');"></div>
+                    <div class="hero-slide absolute inset-0 bg-cover bg-center opacity-0" style="background-image: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1920&q=80');"></div>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-900/70 to-transparent"></div>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+                    <div class="max-w-2xl text-white space-y-6">
+                        <span class="inline-block px-3.5 py-1 bg-amber-600/30 border border-amber-500/40 rounded-full text-amber-300 text-xs sm:text-sm font-semibold tracking-wider uppercase backdrop-blur-sm" data-i18n="hero_badge">
+                            Wood Technology & Smart Living
+                        </span>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-stone-100" data-i18n="hero_title">
+                            We are here to make your life simpler and more modern.
+                        </h1>
+                        <p class="text-lg sm:text-xl text-stone-300 leading-relaxed font-light" data-i18n="hero_desc">
+                            Transforming living spaces through innovative wood technology and space-saving, multi-functional furniture crafted for your ultimate comfort.
+                        </p>
+                        <div class="pt-4 flex flex-wrap gap-4">
+                            <a href="#products" class="bg-amber-600 hover:bg-amber-700 text-white px-7 py-3.5 rounded-xl font-semibold transition shadow-lg shadow-amber-900/30 flex items-center gap-2" onclick="navigateTo('products')" data-i18n="hero_btn_products">
+                                Browse Products <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </a>
+                            <a href="#about" class="bg-stone-800/80 hover:bg-stone-800 text-amber-200 border border-amber-500/30 backdrop-blur-md px-7 py-3.5 rounded-xl font-semibold transition" onclick="navigateTo('about')" data-i18n="hero_btn_story">
+                                Our Story
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Concept Section -->
+            <section class="py-20 bg-stone-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight" data-i18n="concept_title">
+                            What is Multi-Functional Furniture?
+                        </h2>
+                        <p class="text-stone-600 text-lg leading-relaxed" data-i18n="concept_subtitle">
+                            Multi-functional furniture integrates engineering precision and modern woodwork to serve multiple purposes in a single unit, maximizing room capacity without sacrificing elegance.
+                        </p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="p-8 rounded-2xl bg-white border border-stone-200 shadow-sm hover:shadow-md transition">
+                            <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center text-amber-800 text-2xl mb-6">
+                                <i class="fa-solid fa-vector-square"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-900 mb-3" data-i18n="feature_1_title">Space Optimization</h3>
+                            <p class="text-stone-600 leading-relaxed text-sm sm:text-base" data-i18n="feature_1_desc">
+                                Convert compact rooms into spacious environments using transformable desks, expandable dining units, and smart hidden storage systems.
+                            </p>
+                        </div>
+                        <div class="p-8 rounded-2xl bg-white border border-stone-200 shadow-sm hover:shadow-md transition">
+                            <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center text-amber-800 text-2xl mb-6">
+                                <i class="fa-solid fa-tree"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-900 mb-3" data-i18n="feature_2_title">Precision Wood Tech</h3>
+                            <p class="text-stone-600 leading-relaxed text-sm sm:text-base" data-i18n="feature_2_desc">
+                                Engineered with advanced wood processing technology and durable hardwood, ensuring smooth transformations and long-lasting quality.
+                            </p>
+                        </div>
+                        <div class="p-8 rounded-2xl bg-white border border-stone-200 shadow-sm hover:shadow-md transition">
+                            <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center text-amber-800 text-2xl mb-6">
+                                <i class="fa-solid fa-coins"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-900 mb-3" data-i18n="feature_3_title">Cost Efficiency</h3>
+                            <p class="text-stone-600 leading-relaxed text-sm sm:text-base" data-i18n="feature_3_desc">
+                                Save financial resources by purchasing one versatile convertible unit instead of buying multiple individual furniture items.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-14 text-center">
+                        <a href="#about" class="inline-flex items-center gap-3 bg-amber-800 hover:bg-amber-900 text-white px-8 py-4 rounded-xl font-bold text-base shadow-md hover:shadow-lg transition border border-amber-700/50" onclick="navigateTo('about')">
+                            <span data-i18n="link_to_about_btn">Learn More About Us</span>
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product Showcase Preview (Home) - only 2 products now -->
+            <section class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+                        <span class="text-amber-800 font-bold text-sm tracking-widest uppercase" data-i18n="teaser_badge">Featured Innovation</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900" data-i18n="teaser_title">
+                            Explore Our Smart Collection Preview
+                        </h2>
+                        <p class="text-stone-600 text-sm sm:text-base" data-i18n="teaser_subtitle">
+                            A glimpse of our multi-functional furniture engineered for modern residential and commercial spaces.
+                        </p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <!-- Product 1: Dressing Table with Hidden Bed -->
+                        <div class="product-card bg-stone-50 border border-stone-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col" data-id="prod_1">
+                            <div class="carousel-container h-60 overflow-hidden relative">
+                                <img src="https://i.ibb.co/S472L32z/IMG-20260813-000246-662.jpg" alt="Dressing Table with Hidden Bed" class="product-img w-full h-full object-cover transition duration-500" data-index="0" />
+                                <button class="slide-btn absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-stone-800 p-2 rounded-full shadow-md transition" onclick="changeImage('prod_1', -1)">
+                                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                                </button>
+                                <button class="slide-btn absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-stone-800 p-2 rounded-full shadow-md transition" onclick="changeImage('prod_1', 1)">
+                                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                                </button>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow justify-between">
+                                <div>
+                                    <h3 class="text-lg font-bold text-stone-900 mb-1" data-i18n="prod_1_title">Multi-Functional Dressing Table with Bed</h3>
+                                    <p class="text-stone-600 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="prod_1_desc">
+                                        A stylish dressing table that doubles as a comfortable bed, perfect for small spaces.
+                                    </p>
+                                </div>
+                                <div class="border-t border-stone-200 pt-4 mb-4">
+                                    <div class="flex items-center justify-between text-xs mb-1.5">
+                                        <span class="font-semibold text-stone-700" data-i18n="rate_this">Rate this item:</span>
+                                        <span class="rating-score text-amber-800 font-bold"><span class="avg-score">0.0</span> / 5</span>
+                                    </div>
+                                    <div class="star-rating-widget flex items-center gap-1 text-stone-300 text-base" data-id="prod_1">
+                                        <i class="fa-solid fa-star star-btn" data-value="1" onclick="rateProduct('prod_1', 1)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="2" onclick="rateProduct('prod_1', 2)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="3" onclick="rateProduct('prod_1', 3)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="4" onclick="rateProduct('prod_1', 4)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="5" onclick="rateProduct('prod_1', 5)"></i>
+                                        <span class="vote-count text-[11px] text-stone-500 ml-1.5">(0 votes)</span>
+                                    </div>
+                                </div>
+                                <a href="#products" class="inline-flex items-center gap-1.5 text-amber-800 hover:text-amber-900 font-semibold text-xs tracking-wide group" onclick="navigateTo('products')">
+                                    <span data-i18n="view_in_catalog">View Product in Catalog</span>
+                                    <i class="fa-solid fa-chevron-right text-[10px] group-hover:translate-x-1 transition"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Product 2: Compact Dressing Table & Study Desk -->
+                        <div class="product-card bg-stone-50 border border-stone-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col" data-id="prod_2">
+                            <div class="carousel-container h-60 overflow-hidden relative">
+                                <img src="https://i.ibb.co/dwc8FgPV/IMG-20260813-000245-937.jpg" alt="Compact Dressing Table & Study Desk" class="product-img w-full h-full object-cover transition duration-500" data-index="0" />
+                                <button class="slide-btn absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-stone-800 p-2 rounded-full shadow-md transition" onclick="changeImage('prod_2', -1)">
+                                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                                </button>
+                                <button class="slide-btn absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-stone-800 p-2 rounded-full shadow-md transition" onclick="changeImage('prod_2', 1)">
+                                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                                </button>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow justify-between">
+                                <div>
+                                    <h3 class="text-lg font-bold text-stone-900 mb-1" data-i18n="prod_2_title">Compact Dressing Table & Study Desk</h3>
+                                    <p class="text-stone-600 text-xs sm:text-sm leading-relaxed mb-4" data-i18n="prod_2_desc">
+                                        A space-saving solution that combines a dressing table with a functional study desk.
+                                    </p>
+                                </div>
+                                <div class="border-t border-stone-200 pt-4 mb-4">
+                                    <div class="flex items-center justify-between text-xs mb-1.5">
+                                        <span class="font-semibold text-stone-700" data-i18n="rate_this">Rate this item:</span>
+                                        <span class="rating-score text-amber-800 font-bold"><span class="avg-score">0.0</span> / 5</span>
+                                    </div>
+                                    <div class="star-rating-widget flex items-center gap-1 text-stone-300 text-base" data-id="prod_2">
+                                        <i class="fa-solid fa-star star-btn" data-value="1" onclick="rateProduct('prod_2', 1)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="2" onclick="rateProduct('prod_2', 2)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="3" onclick="rateProduct('prod_2', 3)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="4" onclick="rateProduct('prod_2', 4)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="5" onclick="rateProduct('prod_2', 5)"></i>
+                                        <span class="vote-count text-[11px] text-stone-500 ml-1.5">(0 votes)</span>
+                                    </div>
+                                </div>
+                                <a href="#products" class="inline-flex items-center gap-1.5 text-amber-800 hover:text-amber-900 font-semibold text-xs tracking-wide group" onclick="navigateTo('products')">
+                                    <span data-i18n="view_in_catalog">View Product in Catalog</span>
+                                    <i class="fa-solid fa-chevron-right text-[10px] group-hover:translate-x-1 transition"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Focus Section -->
+            <section class="py-20 bg-stone-100 border-t border-stone-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <span class="text-amber-800 font-bold tracking-widest text-xs uppercase" data-i18n="why_badge">Our Philosophy</span>
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 leading-tight" data-i18n="why_title">
+                                Why We Focus on Multi-Functional Products?
+                            </h2>
+                            <p class="text-stone-600 leading-relaxed text-sm sm:text-base" data-i18n="why_desc_1">
+                                Modern living spaces are evolving, and furniture must evolve alongside them. At webet, we firmly believe that efficiency and aesthetic beauty must coexist. Traditional furniture consumes valuable floor space and limits daily flexibility.
+                            </p>
+                            <p class="text-stone-600 leading-relaxed text-sm sm:text-base" data-i18n="why_desc_2">
+                                Our founders created webet to pioneer modern wood technology solutions that seamlessly adapt to your lifestyle—delivering sustainable, sleek, and highly practical interior furniture.
+                            </p>
+                            <div class="pt-2">
+                                <a href="#about" class="inline-flex items-center gap-2 bg-stone-900 hover:bg-stone-800 text-white px-6 py-3.5 rounded-xl font-semibold transition text-sm shadow-md" onclick="navigateTo('about')" data-i18n="link_to_about">
+                                    Learn More About Us <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-stone-300">
+                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" alt="Webet Modern Interior Woodwork" class="w-full h-[420px] object-cover" />
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/90 via-stone-950/40 to-transparent p-6 text-white">
+                                <p class="text-xs sm:text-sm font-medium opacity-90" data-i18n="why_img_caption">Precision woodwork engineered for compact modern living spaces.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- ===== PRODUCTS PAGE ===== -->
+        <section id="page-products" class="page-section">
+            <!-- Page Header Banner -->
+            <div class="bg-amber-950 text-white py-14 border-b border-amber-900/40">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+                    <span class="text-amber-400 text-xs sm:text-sm font-bold tracking-widest uppercase" data-i18n="page_banner_badge">
+                        Smart Space-Saving Innovations
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-amber-100" data-i18n="page_banner_title">
+                        Our Premium Catalog
+                    </h1>
+                    <p class="text-stone-300 text-sm sm:text-base max-w-2xl mx-auto font-light leading-relaxed" data-i18n="page_banner_desc">
+                        Watch full functional video demonstrations, explore high-resolution 3-angle photo galleries, check community ratings, and order directly.
+                    </p>
+                </div>
+            </div>
+
+            <div class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+                <!-- Product 1: Dressing Table with Hidden Bed -->
+                <article class="product-card bg-white border border-stone-200 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition duration-300" data-id="prod_1">
+                    <div class="grid lg:grid-cols-12 gap-0">
+                        <div class="lg:col-span-7 p-6 bg-stone-100/70 border-b lg:border-b-0 lg:border-r border-stone-200 flex flex-col justify-between space-y-6">
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2 text-xs font-bold text-amber-900 uppercase tracking-wider">
+                                    <i class="fa-brands fa-youtube text-red-600 text-base"></i>
+                                    <span data-i18n="video_label">Functional Video Showcase</span>
+                                </div>
+                                <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-300 bg-stone-900">
+                                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/RPdzw_jcKQE?si=zDgEf5RqLyWZ2TIa" title="Dressing Table with Hidden Bed Video Showcase" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between text-xs font-bold text-stone-700">
+                                    <span data-i18n="gallery_label">Detailed Photo Angles (3 Views)</span>
+                                    <span class="text-stone-500 font-normal text-[11px]" data-i18n="gallery_hint">Click thumbnail to expand view</span>
+                                </div>
+                                <div class="h-64 sm:h-72 rounded-2xl overflow-hidden border border-stone-300 relative shadow-inner">
+                                    <img id="main-img-prod_1" src="https://i.ibb.co/S472L32z/IMG-20260813-000246-662.jpg" alt="Dressing Table with Hidden Bed Main View" class="w-full h-full object-cover transition duration-300">
+                                </div>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <img src="https://i.ibb.co/S472L32z/IMG-20260813-000246-662.jpg" alt="Angle 1" class="thumbnail-img w-full h-20 object-cover rounded-xl border-2 border-amber-600 shadow-sm" onclick="switchMainImage('prod_1', this.src, this)">
+                                    <img src="https://i.ibb.co/rRz1pW6c/IMG-20260813-000246-721.jpg" alt="Angle 2" class="thumbnail-img w-full h-20 object-cover rounded-xl border-2 border-transparent hover:border-amber-400 opacity-80 hover:opacity-100 shadow-sm" onclick="switchMainImage('prod_1', this.src, this)">
+                                    <img src="https://i.ibb.co/99wmfmpv/IMG-20260813-000246-153.jpg" alt="Angle 3" class="thumbnail-img w-full h-20 object-cover rounded-xl border-2 border-transparent hover:border-amber-400 opacity-80 hover:opacity-100 shadow-sm" onclick="switchMainImage('prod_1', this.src, this)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5 p-8 flex flex-col justify-between space-y-6">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-3 py-1 bg-amber-100 text-amber-900 rounded-full text-xs font-bold uppercase tracking-wider border border-amber-200">Best Seller</span>
+                                    <span class="text-xs text-stone-500 font-mono">CODE: WB-S01</span>
+                                </div>
+                                <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900 leading-snug" data-i18n="p1_title">Multi-Functional Dressing Table with Bed</h2>
+                                <div class="bg-stone-50 border border-stone-200 p-3.5 rounded-2xl flex items-center justify-between">
+                                    <div>
+                                        <span class="text-xs font-semibold text-stone-600 block" data-i18n="rate_label">User Satisfaction:</span>
+                                        <span class="rating-score text-amber-900 font-extrabold text-base"><span class="avg-score">0.0</span> / 5.0</span>
+                                    </div>
+                                    <div class="star-rating-widget flex items-center gap-1 text-stone-300 text-lg" data-id="prod_1">
+                                        <i class="fa-solid fa-star star-btn" data-value="1" onclick="rateProduct('prod_1', 1)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="2" onclick="rateProduct('prod_1', 2)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="3" onclick="rateProduct('prod_1', 3)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="4" onclick="rateProduct('prod_1', 4)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="5" onclick="rateProduct('prod_1', 5)"></i>
+                                        <span class="vote-count text-xs font-normal text-stone-500 ml-1.5">(0)</span>
+                                    </div>
+                                </div>
+                                <div class="space-y-3 pt-2 text-stone-600 text-sm leading-relaxed">
+                                    <h3 class="font-bold text-stone-800 text-base" data-i18n="desc_heading">Detailed Overview:</h3>
+                                    <p data-i18n="p1_full_desc">
+                                        This elegant dressing table is more than just a vanity. It features a hidden, pull-out bed that transforms your space in seconds. Perfect for studios and guest rooms, it combines style with ultimate functionality.
+                                    </p>
+                                    <ul class="space-y-1.5 text-xs text-stone-700 pt-2 font-medium">
+                                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> <span data-i18n="p1_feat1">Stylish dressing table with a large mirror and storage drawers</span></li>
+                                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> <span data-i18n="p1_feat2">Hidden pull-out bed mechanism for easy transformation</span></li>
+                                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> <span data-i18n="p1_feat3">High-quality wood finish with scratch-resistant coating</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="pt-6 border-t border-stone-200 grid sm:grid-cols-2 gap-3">
+                                <a href="#contact" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition text-center text-sm flex items-center justify-center gap-2" onclick="setProductParam('Multi-Functional Dressing Table with Bed')">
+                                    <i class="fa-solid fa-cart-shopping text-xs"></i>
+                                    <span data-i18n="btn_order">Order This</span>
+                                </a>
+                                <a href="#contact" class="w-full bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-800 font-bold py-3.5 px-4 rounded-xl transition text-center text-sm flex items-center justify-center gap-2" onclick="navigateTo('contact')">
+                                    <i class="fa-solid fa-envelope text-xs"></i>
+                                    <span data-i18n="btn_contact">Contact Us</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 2: Compact Dressing Table & Study Desk -->
+                <article class="product-card bg-white border border-stone-200 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition duration-300" data-id="prod_2">
+                    <div class="grid lg:grid-cols-12 gap-0">
+                        <div class="lg:col-span-7 p-6 bg-stone-100/70 border-b lg:border-b-0 lg:border-r border-stone-200 flex flex-col justify-between space-y-6">
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2 text-xs font-bold text-amber-900 uppercase tracking-wider">
+                                    <i class="fa-brands fa-youtube text-red-600 text-base"></i>
+                                    <span data-i18n="video_label">Functional Video Showcase</span>
+                                </div>
+                                <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-sm border border-stone-300 bg-stone-900">
+                                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/6p7ygZdMkjY?si=uAo30aVUs2sAJjNs" title="Compact Dressing Table & Study Desk Showcase" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between text-xs font-bold text-stone-700">
+                                    <span data-i18n="gallery_label">Detailed Photo Angles (3 Views)</span>
+                                    <span class="text-stone-500 font-normal text-[11px]" data-i18n="gallery_hint">Click thumbnail to expand view</span>
+                                </div>
+                                <div class="h-64 sm:h-72 rounded-2xl overflow-hidden border border-stone-300 relative shadow-inner">
+                                    <img id="main-img-prod_2" src="https://i.ibb.co/dwc8FgPV/IMG-20260813-000245-937.jpg" alt="Compact Dressing Table & Study Desk Main View" class="w-full h-full object-cover transition duration-300">
+                                </div>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <img src="https://i.ibb.co/dwc8FgPV/IMG-20260813-000245-937.jpg" alt="Angle 1" class="thumbnail-img w-full h-20 object-cover rounded-xl border-2 border-amber-600 shadow-sm" onclick="switchMainImage('prod_2', this.src, this)">
+                                    <img src="https://i.ibb.co/GQd5nhL6/IMG-20260813-000246-321.jpg" alt="Angle 2" class="thumbnail-img w-full h-20 object-cover rounded-xl border-2 border-transparent hover:border-amber-400 opacity-80 hover:opacity-100 shadow-sm" onclick="switchMainImage('prod_2', this.src, this)">
+                                    <!-- Third image is a duplicate of first since only two were provided -->
+                                    <img src="https://i.ibb.co/dwc8FgPV/IMG-20260813-000245-937.jpg" alt="Angle 3" class="thumbnail-img w-full h-20 object-cover rounded-xl border-2 border-transparent hover:border-amber-400 opacity-80 hover:opacity-100 shadow-sm" onclick="switchMainImage('prod_2', this.src, this)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5 p-8 flex flex-col justify-between space-y-6">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="px-3 py-1 bg-amber-100 text-amber-900 rounded-full text-xs font-bold uppercase tracking-wider border border-amber-200">Space Saver</span>
+                                    <span class="text-xs text-stone-500 font-mono">CODE: WB-T02</span>
+                                </div>
+                                <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900 leading-snug" data-i18n="p2_title">Compact Dressing Table & Study Desk</h2>
+                                <div class="bg-stone-50 border border-stone-200 p-3.5 rounded-2xl flex items-center justify-between">
+                                    <div>
+                                        <span class="text-xs font-semibold text-stone-600 block" data-i18n="rate_label">User Satisfaction:</span>
+                                        <span class="rating-score text-amber-900 font-extrabold text-base"><span class="avg-score">0.0</span> / 5.0</span>
+                                    </div>
+                                    <div class="star-rating-widget flex items-center gap-1 text-stone-300 text-lg" data-id="prod_2">
+                                        <i class="fa-solid fa-star star-btn" data-value="1" onclick="rateProduct('prod_2', 1)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="2" onclick="rateProduct('prod_2', 2)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="3" onclick="rateProduct('prod_2', 3)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="4" onclick="rateProduct('prod_2', 4)"></i>
+                                        <i class="fa-solid fa-star star-btn" data-value="5" onclick="rateProduct('prod_2', 5)"></i>
+                                        <span class="vote-count text-xs font-normal text-stone-500 ml-1.5">(0)</span>
+                                    </div>
+                                </div>
+                                <div class="space-y-3 pt-2 text-stone-600 text-sm leading-relaxed">
+                                    <h3 class="font-bold text-stone-800 text-base" data-i18n="desc_heading">Detailed Overview:</h3>
+                                    <p data-i18n="p2_full_desc">
+                                        This versatile piece serves as both a practical dressing table and a functional study desk. Its compact design makes it perfect for small bedrooms, dorms, or multi-purpose rooms where space is at a premium.
+                                    </p>
+                                    <ul class="space-y-1.5 text-xs text-stone-700 pt-2 font-medium">
+                                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> <span data-i18n="p2_feat1">Dual-purpose design: dressing table and study desk</span></li>
+                                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> <span data-i18n="p2_feat2">Built-in storage compartments for makeup and study materials</span></li>
+                                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-600"></i> <span data-i18n="p2_feat3">Durable and easy-to-clean surface with a modern finish</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="pt-6 border-t border-stone-200 grid sm:grid-cols-2 gap-3">
+                                <a href="#contact" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition text-center text-sm flex items-center justify-center gap-2" onclick="setProductParam('Compact Dressing Table & Study Desk')">
+                                    <i class="fa-solid fa-cart-shopping text-xs"></i>
+                                    <span data-i18n="btn_order">Order This</span>
+                                </a>
+                                <a href="#contact" class="w-full bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-800 font-bold py-3.5 px-4 rounded-xl transition text-center text-sm flex items-center justify-center gap-2" onclick="navigateTo('contact')">
+                                    <i class="fa-solid fa-envelope text-xs"></i>
+                                    <span data-i18n="btn_contact">Contact Us</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT PAGE ===== -->
+        <section id="page-about" class="page-section">
+            <div class="relative bg-amber-950 text-white py-20 border-b border-amber-900/40 overflow-hidden">
+                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-4">
+                    <span class="text-amber-400 text-xs sm:text-sm font-bold tracking-widest uppercase" data-i18n="hero_badge_about">
+                        Crafting The Future of Living Spaces
+                    </span>
+                    <h1 class="text-3xl sm:text-6xl font-extrabold tracking-tight text-amber-100 leading-tight" data-i18n="hero_title_about">
+                        Redefining Space Through Innovation
+                    </h1>
+                    <p class="text-stone-300 text-base sm:text-lg max-w-3xl mx-auto font-light leading-relaxed" data-i18n="hero_desc_about">
+                        How a vision to eliminate space boundaries turned into a pioneering engineering movement in smart furniture technology.
+                    </p>
+                </div>
+            </div>
+
+            <div class="space-y-24 py-16">
+                <!-- Genesis Story -->
+                <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-950 rounded-full text-xs font-bold uppercase tracking-wider">
+                                <i class="fa-solid fa-compass text-amber-600"></i>
+                                <span data-i18n="gen_badge">The Genesis Story</span>
+                            </div>
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 leading-snug" data-i18n="gen_title">
+                                A Shared Vision Born Out of Necessity
+                            </h2>
+                            <p class="text-stone-600 text-sm sm:text-base leading-relaxed" data-i18n="gen_p1">
+                                In an era where urban real estate costs are soaring and modern living quarters are shrinking, two visionary minds noticed a glaring paradox: while our lifestyles were becoming increasingly dynamic, our furniture remained static, bulky, and inefficient.
+                            </p>
+                            <p class="text-stone-600 text-sm sm:text-base leading-relaxed" data-i18n="gen_p2">
+                                What began as an informal late-night brainstorming session quickly evolved into a dedicated design studio. The founders realized that a single room shouldn't be restricted to a single purpose. A living room could be a bedroom at night, and a hallway console could host a dinner party of eight. Thus, <strong>webet Smart Wood Technology</strong> was founded to bridge high-end woodworking with modern spatial engineering.
+                            </p>
+                        </div>
+                        <div class="relative">
+                            <div class="aspect-4/3 rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-stone-200">
+                                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80" alt="Woodworking Workshop" class="w-full h-full object-cover">
+                            </div>
+                            <div class="absolute -bottom-6 -left-6 bg-amber-900 text-white p-6 rounded-2xl shadow-xl hidden sm:block max-w-xs border border-amber-700">
+                                <p class="text-2xl font-black text-amber-400">100%</p>
+                                <p class="text-xs text-stone-200 mt-1 font-medium" data-i18n="gen_card_text">Precision-engineered convertible wood mechanics.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- What Sets Us Apart -->
+                <section class="bg-stone-100 py-16 border-y border-stone-200">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                        <div class="text-center space-y-3 max-w-3xl mx-auto">
+                            <span class="text-amber-700 text-xs font-bold uppercase tracking-widest" data-i18n="diff_badge">Why Choose Us</span>
+                            <h2 class="text-3xl font-extrabold text-stone-900" data-i18n="diff_title">What Sets Us Apart in the Market</h2>
+                            <p class="text-stone-600 text-sm" data-i18n="diff_desc">
+                                We don't just build furniture; we engineer space-saving transformation systems for modern living.
+                            </p>
+                        </div>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-3">
+                                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-bold">
+                                    <i class="fa-solid fa-arrows-split-up-and-left"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-stone-900" data-i18n="diff1_title">3-in-1 Multi-Functionality</h3>
+                                <p class="text-xs text-stone-600 leading-relaxed" data-i18n="diff1_desc">
+                                    Unlike traditional static furniture, our pieces transform into multiple functions, saving up to 60% of floor space.
+                                </p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-3">
+                                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-bold">
+                                    <i class="fa-solid fa-gears"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-stone-900" data-i18n="diff2_title">Heavy-Duty Pneumatics</h3>
+                                <p class="text-xs text-stone-600 leading-relaxed" data-i18n="diff2_desc">
+                                    Equipped with high-precision hydraulic pistons and smooth mechanical hinges designed for over 10,000 smooth transitions.
+                                </p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-3">
+                                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-bold">
+                                    <i class="fa-solid fa-leaf"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-stone-900" data-i18n="diff3_title">Sustainable Engineering</h3>
+                                <p class="text-xs text-stone-600 leading-relaxed" data-i18n="diff3_desc">
+                                    We combine premium hardwoods with eco-friendly treated composite materials built to withstand changing climates.
+                                </p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-3">
+                                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-bold">
+                                    <i class="fa-solid fa-cubes"></i>
+                                </div>
+                                <h3 class="text-lg font-bold text-stone-900" data-i18n="diff4_title">Digital Customization</h3>
+                                <p class="text-xs text-stone-600 leading-relaxed" data-i18n="diff4_desc">
+                                    Direct-to-consumer digital system allowing custom dimensional adjustments for specific apartment layouts.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Global Data -->
+                <section class="bg-amber-950 text-amber-50 py-16">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                        <div class="text-center space-y-3 max-w-3xl mx-auto">
+                            <span class="text-amber-400 text-xs font-bold uppercase tracking-widest" data-i18n="data_badge">Data-Driven Market Reality</span>
+                            <h2 class="text-3xl font-extrabold text-amber-100" data-i18n="data_title">Why Smart Furniture is No Longer Optional</h2>
+                            <p class="text-stone-300 text-sm font-light leading-relaxed" data-i18n="data_desc">
+                                Global urbanization metrics reveal a dramatic shift in living behaviors. We base our engineering models on verified international trends.
+                            </p>
+                        </div>
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="bg-amber-900/40 border border-amber-800/60 p-6 rounded-2xl text-center space-y-2">
+                                <span class="text-4xl font-black text-amber-400">$12.8B</span>
+                                <h3 class="text-sm font-bold text-white" data-i18n="stat1_title">Global Market Size</h3>
+                                <p class="text-xs text-stone-300" data-i18n="stat1_desc">Projected multi-functional furniture market evaluation by 2030.</p>
+                            </div>
+                            <div class="bg-amber-900/40 border border-amber-800/60 p-6 rounded-2xl text-center space-y-2">
+                                <span class="text-4xl font-black text-amber-400">68%</span>
+                                <h3 class="text-sm font-bold text-white" data-i18n="stat2_title">Urban Density Shift</h3>
+                                <p class="text-xs text-stone-300" data-i18n="stat2_desc">World population expected to live in compact urban centers by 2050.</p>
+                            </div>
+                            <div class="bg-amber-900/40 border border-amber-800/60 p-6 rounded-2xl text-center space-y-2">
+                                <span class="text-4xl font-black text-amber-400">3-in-1</span>
+                                <h3 class="text-sm font-bold text-white" data-i18n="stat3_title">Spatial Efficiency</h3>
+                                <p class="text-xs text-stone-300" data-i18n="stat3_desc">Average floor area saved per item using webet convertible furniture.</p>
+                            </div>
+                            <div class="bg-amber-900/40 border border-amber-800/60 p-6 rounded-2xl text-center space-y-2">
+                                <span class="text-4xl font-black text-amber-400">10+ Yrs</span>
+                                <h3 class="text-sm font-bold text-white" data-i18n="stat4_title">Durability Standard</h3>
+                                <p class="text-xs text-stone-300" data-i18n="stat4_desc">Rigorous stress-tested pneumatic and mechanical joint lifespan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Leadership and Collective Mastery sections REMOVED as requested -->
+
+                <!-- Roadmap -->
+                <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                    <div class="text-center space-y-3 max-w-2xl mx-auto">
+                        <span class="text-amber-700 text-xs font-bold uppercase tracking-widest" data-i18n="plan_badge">Strategic Vision</span>
+                        <h2 class="text-3xl font-extrabold text-stone-900" data-i18n="plan_title">Short-Term & Long-Term Roadmap</h2>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-stone-100 border border-stone-200 p-8 rounded-3xl space-y-4">
+                            <div class="flex items-center gap-3 text-amber-900 font-bold text-lg">
+                                <i class="fa-solid fa-bullseye text-amber-600"></i>
+                                <h3 data-i18n="st_title">Short-Term Goals (1 - 2 Years)</h3>
+                            </div>
+                            <ul class="space-y-3 text-xs sm:text-sm text-stone-700">
+                                <li class="flex items-start gap-2.5"><i class="fa-solid fa-check-circle text-amber-600 mt-1"></i> <span data-i18n="st_1">Deploy 5 flagship multi-functional product lines optimized for urban apartments.</span></li>
+                                <li class="flex items-start gap-2.5"><i class="fa-solid fa-check-circle text-amber-600 mt-1"></i> <span data-i18n="st_2">Establish an interactive digital showroom with direct ordering and home delivery routing.</span></li>
+                                <li class="flex items-start gap-2.5"><i class="fa-solid fa-check-circle text-amber-600 mt-1"></i> <span data-i18n="st_3">Partner with local architects and real estate developers for pre-furnished smart units.</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-amber-950 text-white p-8 rounded-3xl space-y-4 border border-amber-900">
+                            <div class="flex items-center gap-3 text-amber-400 font-bold text-lg">
+                                <i class="fa-solid fa-rocket"></i>
+                                <h3 data-i18n="lt_title">Long-Term Vision (3 - 5 Years)</h3>
+                            </div>
+                            <ul class="space-y-3 text-xs sm:text-sm text-stone-300">
+                                <li class="flex items-start gap-2.5"><i class="fa-solid fa-check-circle text-amber-400 mt-1"></i> <span data-i18n="lt_1">Automate hardware manufacturing through custom robotic assembly lines.</span></li>
+                                <li class="flex items-start gap-2.5"><i class="fa-solid fa-check-circle text-amber-400 mt-1"></i> <span data-i18n="lt_2">Integrate IoT smart sensors for motorized furniture opening via voice and smartphone apps.</span></li>
+                                <li class="flex items-start gap-2.5"><i class="fa-solid fa-check-circle text-amber-400 mt-1"></i> <span data-i18n="lt_3">Expand distribution networks across major East African commercial hubs.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT PAGE ===== -->
+        <section id="page-contact" class="page-section">
+            <div class="relative bg-amber-950 text-white py-16 border-b border-amber-900/40 overflow-hidden">
+                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-3">
+                    <span class="text-amber-400 text-xs sm:text-sm font-bold tracking-widest uppercase" data-i18n="hero_badge_contact">Get In Touch</span>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-amber-100" data-i18n="hero_title_contact">Connect With Our Team</h1>
+                    <p class="text-stone-300 text-sm sm:text-base max-w-2xl mx-auto font-light" data-i18n="hero_desc_contact">
+                        Place a custom product order or start a conversation about transforming your space.
+                    </p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+                <!-- Info Cards -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h3 class="font-bold text-stone-900 text-sm" data-i18n="info_loc_title">Main Showroom</h3>
+                            <p class="text-xs text-stone-600 mt-1" data-i18n="info_loc_desc">Bole Road, Near Friendship Hub, Addis Ababa, Ethiopia</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <h3 class="font-bold text-stone-900 text-sm" data-i18n="info_phone_title">Call Us</h3>
+                            <p class="text-xs text-stone-600 mt-1">+251 911 000 000</p>
+                            <p class="text-xs text-stone-600">+251 922 000 000</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h3 class="font-bold text-stone-900 text-sm" data-i18n="info_email_title">Email Us</h3>
+                            <p class="text-xs text-stone-600 mt-1">info@webetwood.com</p>
+                            <p class="text-xs text-stone-600">orders@webetwood.com</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-clock"></i></div>
+                        <div>
+                            <h3 class="font-bold text-stone-900 text-sm" data-i18n="info_hours_title">Working Hours</h3>
+                            <p class="text-xs text-stone-600 mt-1" data-i18n="info_hours_desc">Mon - Sat: 8:30 AM - 6:30 PM</p>
+                            <p class="text-xs text-amber-700 font-semibold" data-i18n="info_hours_sub">Sunday Closed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Section -->
+                <div id="formSection" class="bg-white border border-stone-200 rounded-3xl shadow-sm overflow-hidden grid lg:grid-cols-12">
+                    <div class="lg:col-span-7 p-6 sm:p-10 space-y-8">
+                        <!-- Tabs -->
+                        <div class="flex p-1 bg-stone-100 rounded-xl">
+                            <button id="tabOrderBtn" onclick="switchTab('order')" class="flex-1 py-3 text-xs sm:text-sm font-bold rounded-lg transition bg-amber-900 text-white shadow-sm flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span data-i18n="tab_order">1. Product Order</span>
+                            </button>
+                            <button id="tabGeneralBtn" onclick="switchTab('general')" class="flex-1 py-3 text-xs sm:text-sm font-bold rounded-lg transition text-stone-600 hover:text-stone-900 flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-comments"></i>
+                                <span data-i18n="tab_general">2. General Inquiry & Ideas</span>
+                            </button>
+                        </div>
+
+                        <!-- Order Form -->
+                        <form id="orderForm" class="space-y-4">
+                            <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-2">
+                                <div class="flex items-center justify-between">
+                                    <label class="block text-xs font-bold text-amber-900 uppercase tracking-wider" data-i18n="lbl_selected_product">Selected Product</label>
+                                    <a href="#products" class="text-xs font-bold text-amber-700 hover:text-amber-900 underline flex items-center gap-1 transition" onclick="navigateTo('products')">
+                                        <i class="fa-solid fa-store"></i>
+                                        <span data-i18n="btn_browse_catalog">Browse Catalog</span>
+                                    </a>
+                                </div>
+                                <input type="text" id="selectedProductInput" class="w-full bg-transparent font-extrabold text-amber-950 text-base focus:outline-none hidden" readonly>
+                                <div id="productSelectDropdownContainer">
+                                    <select id="productDropdown" class="w-full bg-white border border-amber-300 rounded-lg px-3 py-2 text-sm font-semibold text-stone-800 focus:ring-2 focus:ring-amber-600 focus:outline-none">
+                                        <option value="" disabled selected data-i18n="opt_select_product">-- Select a Product from List --</option>
+                                        <option value="Multi-Functional Dressing Table with Bed">Multi-Functional Dressing Table with Bed</option>
+                                        <option value="Compact Dressing Table & Study Desk">Compact Dressing Table & Study Desk</option>
+                                        <option value="Custom Furniture Order">Custom Furniture Order</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div><label class="block text-xs font-bold text-stone-700 mb-1" data-i18n="lbl_fullname">Full Name *</label><input type="text" required placeholder="Abebe Bikila" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-amber-600 focus:outline-none"></div>
+                                <div><label class="block text-xs font-bold text-stone-700 mb-1" data-i18n="lbl_phone">Phone Number *</label><input type="tel" required placeholder="+251 9..." class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-amber-600 focus:outline-none"></div>
+                            </div>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div><label class="block text-xs font-bold text-stone-700 mb-1" data-i18n="lbl_email">Email Address</label><input type="email" placeholder="example@gmail.com" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-amber-600 focus:outline-none"></div>
+                                <div><label class="block text-xs font-bold text-stone-700 mb-1" data-i18n="lbl_quantity">Quantity</label><input type="number" min="1" value="1" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-amber-600 focus:outline-none"></div>
+                            </div>
+                            <div><label class="block text-xs font-bold text-stone-700 mb-1" data-i18n="lbl_custom_note">Custom Dimensions / Notes</label><textarea rows="4" placeholder="Specify wood finish, room dimensions, or specific requirements..." class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-amber-600 focus:outline-none"></textarea></div>
+                            <button type="submit" class="w-full bg-amber-900 hover:bg-amber-950 text-white font-bold py-3.5 rounded-xl transition shadow-md flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span data-i18n="btn_submit_order">Submit Order Inquiry</span>
+                            </button>
+                        </form>
+
+                        <!-- General Form (hidden) -->
+                        <form id="generalForm" class="space-y-4 hidden">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div><label class="block text-xs font-bold text-stone-700 mb-1" data-i18n="lbl_fullname">Full Name *</label><input type="text" required placeholder="Abebe Bikila" class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-amber-600 focus:outline-none"></div>
+                                <div><label class="block text-xs font-bold text-stone-700 mb-1" data-i18n="lbl_phone">Phone Number *</label><input type="tel" required placeholder="+251 9..." class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-amber-600 focus:outline-none"></div>
+                            </div>
+                            <div><label class="block text-xs font-bold text-stone-700 mb-1" data-i18n="lbl_subject">Subject / Inquiry Type</label>
+                                <select class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-amber-600 focus:outline-none bg-white">
+                                    <option data-i18n="opt_general">General Question</option>
+                                    <option data-i18n="opt_partner">Partnership / Investment</option>
+                                    <option data-i18n="opt_custom">Custom Design Consultation</option>
+                                    <option data-i18n="opt_feedback">Feedback & Suggestions</option>
+                                </select>
+                            </div>
+                            <div><label class="block text-xs font-bold text-stone-700 mb-1" data-i18n="lbl_message">Your Message / Idea *</label><textarea rows="5" required placeholder="Share your ideas or inquiries with us..." class="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-amber-600 focus:outline-none"></textarea></div>
+                            <button type="submit" class="w-full bg-amber-900 hover:bg-amber-950 text-white font-bold py-3.5 rounded-xl transition shadow-md flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span data-i18n="btn_send_msg">Send Message</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Map Side -->
+                    <div class="lg:col-span-5 bg-stone-900 text-white p-8 flex flex-col justify-between relative overflow-hidden">
+                        <div class="space-y-4 relative z-10">
+                            <span class="text-amber-400 text-xs font-bold uppercase tracking-widest" data-i18n="map_badge">Visit Us</span>
+                            <h3 class="text-2xl font-extrabold text-amber-100" data-i18n="map_title">Experience the Smart Furniture Live</h3>
+                            <p class="text-xs text-stone-300 leading-relaxed" data-i18n="map_desc">
+                                Visit our showroom to see smooth mechanism transformations and consult directly with our spatial engineering team.
+                            </p>
+                        </div>
+                        <div class="my-6 rounded-2xl overflow-hidden border border-stone-700 shadow-inner h-64 bg-stone-800">
+                            <iframe title="Showroom Location Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15761.733519398863!2d38.7833!3d8.9833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cef5ab402d%3A0x8467b6b037a24d80!2sBole%2C%20Addis%20Ababa!5e0!3m2!1sen!2set!4v1620000000000!5m2!1sen!2set" class="w-full h-full border-0 opacity-80 hover:opacity-100 transition" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <div class="text-xs text-stone-400 border-t border-stone-800 pt-4 flex items-center justify-between">
+                            <span>webet Smart Wood HQ</span>
+                            <span class="text-amber-400 font-semibold">Addis Ababa, Ethiopia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-stone-950 text-stone-400 py-12 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 border-b border-stone-800 pb-10">
+                <div class="text-center md:text-left space-y-2">
+                    <!-- Brand Logo -->
+                    <a href="#home" class="flex items-center justify-center md:justify-start" onclick="navigateTo('home')">
+                        <img src="https://i.ibb.co/dxc2JhD/1786568123751.png" alt="webet logo" class="h-10 w-auto" />
+                    </a>
+                    <p class="text-xs text-stone-500" data-i18n="footer_slogan">Wood Technology & Multi-Functional Furniture</p>
+                </div>
+                <!-- Social Media Links -->
+                <div class="flex items-center space-x-4">
+                    <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-stone-900 border border-stone-800 flex items-center justify-center text-stone-400 hover:text-amber-400 hover:border-amber-500/50 transition"><i class="fa-brands fa-instagram text-base"></i></a>
+                    <a href="#" aria-label="TikTok" class="w-10 h-10 rounded-full bg-stone-900 border border-stone-800 flex items-center justify-center text-stone-400 hover:text-amber-400 hover:border-amber-500/50 transition"><i class="fa-brands fa-tiktok text-base"></i></a>
+                    <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-stone-900 border border-stone-800 flex items-center justify-center text-stone-400 hover:text-amber-400 hover:border-amber-500/50 transition"><i class="fa-brands fa-facebook-f text-base"></i></a>
+                    <a href="#" aria-label="WhatsApp" class="w-10 h-10 rounded-full bg-stone-900 border border-stone-800 flex items-center justify-center text-stone-400 hover:text-amber-400 hover:border-amber-500/50 transition"><i class="fa-brands fa-whatsapp text-base"></i></a>
+                </div>
+            </div>
+            <div class="pt-8 text-center text-xs text-stone-500">
+                <p>&copy; 2026 webet Wood Technology. All rights reserved.</p>
+                <p class="mt-2 text-stone-400">This website was developed by <span class="text-amber-400 font-semibold">Double s</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT (shared) ========== -->
+    <script>
+        // ---------- Navigation ----------
+        function navigateTo(page) {
+            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+            const target = document.getElementById('page-' + page);
+            if (target) target.classList.add('active');
+
+            // Update nav links highlight
+            document.querySelectorAll('.nav-link').forEach(el => {
+                el.classList.remove('active-nav');
+                if (el.dataset.page === page) {
+                    el.classList.add('active-nav');
+                }
+            });
+            // Update hash
+            window.location.hash = page;
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Handle hash on load and hashchange
+        function handleHash() {
+            const hash = window.location.hash.substring(1) || 'home';
+            navigateTo(hash);
+        }
+        window.addEventListener('hashchange', handleHash);
+
+        // ---------- Hero Slider ----------
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        if (slides.length) {
+            setInterval(() => {
+                slides[currentSlide].classList.remove('opacity-100');
+                slides[currentSlide].classList.add('opacity-0');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.remove('opacity-0');
+                slides[currentSlide].classList.add('opacity-100');
+            }, 5000);
+        }
+
+        // ---------- Product Image Carousel (Home) ----------
+        const productData = {
+            prod_1: {
+                images: [
+                    'https://i.ibb.co/S472L32z/IMG-20260813-000246-662.jpg',
+                    'https://i.ibb.co/rRz1pW6c/IMG-20260813-000246-721.jpg',
+                    'https://i.ibb.co/99wmfmpv/IMG-20260813-000246-153.jpg'
+                ]
+            },
+            prod_2: {
+                images: [
+                    'https://i.ibb.co/dwc8FgPV/IMG-20260813-000245-937.jpg',
+                    'https://i.ibb.co/GQd5nhL6/IMG-20260813-000246-321.jpg',
+                    'https://i.ibb.co/dwc8FgPV/IMG-20260813-000245-937.jpg'
+                ]
+            }
+        };
+
+        function changeImage(productId, direction) {
+            const card = document.querySelector(`.product-card[data-id="${productId}"]`);
+            if (!card) return;
+            const imgEl = card.querySelector('.product-img');
+            if (!imgEl) return;
+            let idx = parseInt(imgEl.getAttribute('data-index')) || 0;
+            const images = productData[productId].images;
+            idx = (idx + direction + images.length) % images.length;
+            imgEl.src = images[idx];
+            imgEl.setAttribute('data-index', idx);
+        }
+
+        // ---------- Thumbnail switcher (Products page) ----------
+        function switchMainImage(productId, newSrc, clickedThumbnail) {
+            const mainImg = document.getElementById(`main-img-${productId}`);
+            if (mainImg) mainImg.src = newSrc;
+            const card = document.querySelector(`.product-card[data-id="${productId}"]`);
+            if (!card) return;
+            const thumbnails = card.querySelectorAll('.thumbnail-img');
+            thumbnails.forEach(thumb => {
+                thumb.classList.remove('border-amber-600', 'opacity-100');
+                thumb.classList.add('border-transparent', 'opacity-80');
+            });
+            clickedThumbnail.classList.remove('border-transparent', 'opacity-80');
+            clickedThumbnail.classList.add('border-amber-600', 'opacity-100');
+        }
+
+        // ---------- Star Rating System ----------
+        function highlightStars(productId, rating) {
+            const widget = document.querySelector(`.star-rating-widget[data-id="${productId}"]`);
+            if (!widget) return;
+            widget.querySelectorAll('.star-btn').forEach(star => {
+                const val = parseInt(star.getAttribute('data-value'));
+                if (val <= rating) { star.classList.add('text-amber-500');
+                    star.classList.remove('text-stone-300'); } else { star.classList.remove('text-amber-500');
+                    star.classList.add('text-stone-300'); }
+            });
+        }
+
+        function rateProduct(productId, rating) {
+            let sum = parseInt(localStorage.getItem(`sum_${productId}`)) || 0;
+            let count = parseInt(localStorage.getItem(`count_${productId}`)) || 0;
+            sum += rating;
+            count += 1;
+            localStorage.setItem(`sum_${productId}`, sum);
+            localStorage.setItem(`count_${productId}`, count);
+            localStorage.setItem(`user_rating_${productId}`, rating);
+            updateUI(productId, sum, count, rating);
+        }
+
+        function updateUI(productId, sum, count, userRating = null) {
+            const cards = document.querySelectorAll(`.product-card[data-id="${productId}"]`);
+            cards.forEach(card => {
+                const avg = count > 0 ? (sum / count).toFixed(1) : "0.0";
+                const avgSpan = card.querySelector('.avg-score');
+                if (avgSpan) avgSpan.innerText = avg;
+                const voteSpan = card.querySelector('.vote-count');
+                if (voteSpan) voteSpan.innerText = `(${count} votes)`;
+                const active = userRating || localStorage.getItem(`user_rating_${productId}`) || Math.round(parseFloat(avg));
+                highlightStars(productId, active);
+            });
+        }
+
+        // Initialize ratings on all product cards
+        document.querySelectorAll('.product-card').forEach(card => {
+            const id = card.getAttribute('data-id');
+            if (!id) return;
+            const sum = parseInt(localStorage.getItem(`sum_${id}`)) || 0;
+            const count = parseInt(localStorage.getItem(`count_${id}`)) || 0;
+            updateUI(id, sum, count);
+            // Hover events
+            const widget = card.querySelector('.star-rating-widget');
+            if (widget) {
+                widget.querySelectorAll('.star-btn').forEach(star => {
+                    star.addEventListener('mouseenter', () => {
+                        highlightStars(id, parseInt(star.getAttribute('data-value')));
+                    });
+                });
+                widget.addEventListener('mouseleave', () => {
+                    const userRating = localStorage.getItem(`user_rating_${id}`);
+                    const sum2 = parseInt(localStorage.getItem(`sum_${id}`)) || 0;
+                    const count2 = parseInt(localStorage.getItem(`count_${id}`)) || 0;
+                    const avg2 = count2 > 0 ? Math.round(sum2 / count2) : 0;
+                    highlightStars(id, userRating || avg2);
+                });
+            }
+        });
+
+        // ---------- Contact: Tab Switching ----------
+        function switchTab(tab) {
+            const orderForm = document.getElementById('orderForm');
+            const generalForm = document.getElementById('generalForm');
+            const tabOrderBtn = document.getElementById('tabOrderBtn');
+            const tabGeneralBtn = document.getElementById('tabGeneralBtn');
+            if (tab === 'order') {
+                orderForm.classList.remove('hidden');
+                generalForm.classList.add('hidden');
+                tabOrderBtn.className = "flex-1 py-3 text-xs sm:text-sm font-bold rounded-lg transition bg-amber-900 text-white shadow-sm flex items-center justify-center gap-2";
+                tabGeneralBtn.className = "flex-1 py-3 text-xs sm:text-sm font-bold rounded-lg transition text-stone-600 hover:text-stone-900 flex items-center justify-center gap-2";
+            } else {
+                orderForm.classList.add('hidden');
+                generalForm.classList.remove('hidden');
+                tabGeneralBtn.className = "flex-1 py-3 text-xs sm:text-sm font-bold rounded-lg transition bg-amber-900 text-white shadow-sm flex items-center justify-center gap-2";
+                tabOrderBtn.className = "flex-1 py-3 text-xs sm:text-sm font-bold rounded-lg transition text-stone-600 hover:text-stone-900 flex items-center justify-center gap-2";
+            }
+        }
+
+        // ---------- Contact: Product auto-fill from URL ----------
+        function setProductParam(productName) {
+            sessionStorage.setItem('selectedProduct', productName);
+            navigateTo('contact');
+            setTimeout(() => fillProductInput(), 150);
+        }
+
+        function fillProductInput() {
+            const product = sessionStorage.getItem('selectedProduct');
+            if (!product) return;
+            const input = document.getElementById('selectedProductInput');
+            const dropdownContainer = document.getElementById('productSelectDropdownContainer');
+            if (input && dropdownContainer) {
+                input.value = product;
+                input.classList.remove('hidden');
+                dropdownContainer.classList.add('hidden');
+                switchTab('order');
+            }
+        }
+
+        // On contact page load, check sessionStorage
+        window.addEventListener('hashchange', () => {
+            if (window.location.hash === '#contact') {
+                setTimeout(fillProductInput, 200);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            handleHash();
+            if (window.location.hash === '#contact') {
+                setTimeout(fillProductInput, 300);
+            }
+        });
+
+        // ---------- Language Switcher ----------
+        const translations = {
+            en: {
+                nav_home: "Home",
+                nav_products: "Our Products",
+                nav_about: "About Us",
+                nav_contact: "Contact Us",
+                nav_explore: "Inquire Now",
+                hero_badge: "Wood Technology & Smart Living",
+                hero_title: "We are here to make your life simpler and more modern.",
+                hero_desc: "Transforming living spaces through innovative wood technology and space-saving, multi-functional furniture crafted for your ultimate comfort.",
+                hero_btn_products: "Browse Products",
+                hero_btn_story: "Our Story",
+                concept_title: "What is Multi-Functional Furniture?",
+                concept_subtitle: "Multi-functional furniture integrates engineering precision and modern woodwork to serve multiple purposes in a single unit, maximizing room capacity without sacrificing elegance.",
+                feature_1_title: "Space Optimization",
+                feature_1_desc: "Convert compact rooms into spacious environments using transformable desks, expandable dining units, and smart hidden storage systems.",
+                feature_2_title: "Precision Wood Tech",
+                feature_2_desc: "Engineered with advanced wood processing technology and durable hardwood, ensuring smooth transformations and long-lasting quality.",
+                feature_3_title: "Cost Efficiency",
+                feature_3_desc: "Save financial resources by purchasing one versatile convertible unit instead of buying multiple individual furniture items.",
+                link_to_about_btn: "Learn More About Us",
+                teaser_badge: "Featured Innovation",
+                teaser_title: "Explore Our Smart Collection Preview",
+                teaser_subtitle: "A glimpse of our multi-functional furniture engineered for modern residential and commercial spaces.",
+                prod_1_title: "Multi-Functional Dressing Table with Bed",
+                prod_1_desc: "A stylish dressing table that doubles as a comfortable bed, perfect for small spaces.",
+                prod_2_title: "Compact Dressing Table & Study Desk",
+                prod_2_desc: "A space-saving solution that combines a dressing table with a functional study desk.",
+                rate_this: "Rate this item:",
+                view_in_catalog: "View Product in Catalog",
+                why_badge: "Our Philosophy",
+                why_title: "Why We Focus on Multi-Functional Products?",
+                why_desc_1: "Modern living spaces are evolving, and furniture must evolve alongside them. At webet, we firmly believe that efficiency and aesthetic beauty must coexist. Traditional furniture consumes valuable floor space and limits daily flexibility.",
+                why_desc_2: "Our founders created webet to pioneer modern wood technology solutions that seamlessly adapt to your lifestyle—delivering sustainable, sleek, and highly practical interior furniture.",
+                link_to_about: "Learn More About Us",
+                why_img_caption: "Precision woodwork engineered for compact modern living spaces.",
+                footer_slogan: "Wood Technology & Multi-Functional Furniture",
+                page_banner_badge: "Smart Space-Saving Innovations",
+                page_banner_title: "Our Premium Catalog",
+                page_banner_desc: "Watch full functional video demonstrations, explore high-resolution 3-angle photo galleries, check community ratings, and order directly.",
+                video_label: "Functional Video Showcase",
+                gallery_label: "Detailed Photo Angles (3 Views)",
+                gallery_hint: "Click thumbnail to expand view",
+                rate_label: "User Satisfaction:",
+                desc_heading: "Detailed Overview:",
+                btn_order: "Order This",
+                btn_contact: "Contact Us",
+                p1_full_desc: "This elegant dressing table is more than just a vanity. It features a hidden, pull-out bed that transforms your space in seconds. Perfect for studios and guest rooms, it combines style with ultimate functionality.",
+                p1_feat1: "Stylish dressing table with a large mirror and storage drawers",
+                p1_feat2: "Hidden pull-out bed mechanism for easy transformation",
+                p1_feat3: "High-quality wood finish with scratch-resistant coating",
+                p2_full_desc: "This versatile piece serves as both a practical dressing table and a functional study desk. Its compact design makes it perfect for small bedrooms, dorms, or multi-purpose rooms where space is at a premium.",
+                p2_feat1: "Dual-purpose design: dressing table and study desk",
+                p2_feat2: "Built-in storage compartments for makeup and study materials",
+                p2_feat3: "Durable and easy-to-clean surface with a modern finish",
+                hero_badge_about: "Crafting The Future of Living Spaces",
+                hero_title_about: "Redefining Space Through Innovation",
+                hero_desc_about: "How a vision to eliminate space boundaries turned into a pioneering engineering movement in smart furniture technology.",
+                gen_badge: "The Genesis Story",
+                gen_title: "A Shared Vision Born Out of Necessity",
+                gen_p1: "In an era where urban real estate costs are soaring and modern living quarters are shrinking, two visionary minds noticed a glaring paradox: while our lifestyles were becoming increasingly dynamic, our furniture remained static, bulky, and inefficient.",
+                gen_p2: "What began as an informal late-night brainstorming session quickly evolved into a dedicated design studio. The founders realized that a single room shouldn't be restricted to a single purpose. A living room could be a bedroom at night, and a hallway console could host a dinner party of eight. Thus, webet Smart Wood Technology was founded to bridge high-end woodworking with modern spatial engineering.",
+                gen_card_text: "Precision-engineered convertible wood mechanics.",
+                diff_badge: "Why Choose Us",
+                diff_title: "What Sets Us Apart in the Market",
+                diff_desc: "We don't just build furniture; we engineer space-saving transformation systems for modern living.",
+                diff1_title: "3-in-1 Multi-Functionality",
+                diff1_desc: "Unlike traditional static furniture, our pieces transform into multiple functions, saving up to 60% of floor space.",
+                diff2_title: "Heavy-Duty Pneumatics",
+                diff2_desc: "Equipped with high-precision hydraulic pistons and smooth mechanical hinges designed for over 10,000 smooth transitions.",
+                diff3_title: "Sustainable Engineering",
+                diff3_desc: "We combine premium hardwoods with eco-friendly treated composite materials built to withstand changing climates.",
+                diff4_title: "Digital Customization",
+                diff4_desc: "Direct-to-consumer digital system allowing custom dimensional adjustments for specific apartment layouts.",
+                data_badge: "Data-Driven Market Reality",
+                data_title: "Why Smart Furniture is No Longer Optional",
+                data_desc: "Global urbanization metrics reveal a dramatic shift in living behaviors. We base our engineering models on verified international trends.",
+                stat1_title: "Global Market Size",
+                stat1_desc: "Projected multi-functional furniture market evaluation by 2030.",
+                stat2_title: "Urban Density Shift",
+                stat2_desc: "World population expected to live in compact urban centers by 2050.",
+                stat3_title: "Spatial Efficiency",
+                stat3_desc: "Average floor area saved per item using webet convertible furniture.",
+                stat4_title: "Durability Standard",
+                stat4_desc: "Rigorous stress-tested pneumatic and mechanical joint lifespan.",
+                plan_badge: "Strategic Vision",
+                plan_title: "Short-Term & Long-Term Roadmap",
+                st_title: "Short-Term Goals (1 - 2 Years)",
+                st_1: "Deploy 5 flagship multi-functional product lines optimized for urban apartments.",
+                st_2: "Establish an interactive digital showroom with direct ordering and home delivery routing.",
+                st_3: "Partner with local architects and real estate developers for pre-furnished smart units.",
+                lt_title: "Long-Term Vision (3 - 5 Years)",
+                lt_1: "Automate hardware manufacturing through custom robotic assembly lines.",
+                lt_2: "Integrate IoT smart sensors for motorized furniture opening via voice and smartphone apps.",
+                lt_3: "Expand distribution networks across major East African commercial hubs.",
+                hero_badge_contact: "Get In Touch",
+                hero_title_contact: "Connect With Our Team",
+                hero_desc_contact: "Place a custom product order or start a conversation about transforming your space.",
+                info_loc_title: "Main Showroom",
+                info_loc_desc: "Bole Road, Near Friendship Hub, Addis Ababa, Ethiopia",
+                info_phone_title: "Call Us",
+                info_email_title: "Email Us",
+                info_hours_title: "Working Hours",
+                info_hours_desc: "Mon - Sat: 8:30 AM - 6:30 PM",
+                info_hours_sub: "Sunday Closed",
+                tab_order: "1. Product Order",
+                tab_general: "2. General Inquiry & Ideas",
+                lbl_selected_product: "Selected Product",
+                btn_browse_catalog: "Browse Catalog",
+                opt_select_product: "-- Select a Product from List --",
+                lbl_fullname: "Full Name *",
+                lbl_phone: "Phone Number *",
+                lbl_email: "Email Address",
+                lbl_quantity: "Quantity",
+                lbl_custom_note: "Custom Dimensions / Notes",
+                btn_submit_order: "Submit Order Inquiry",
+                lbl_subject: "Subject / Inquiry Type",
+                opt_general: "General Question",
+                opt_partner: "Partnership / Investment",
+                opt_custom: "Custom Design Consultation",
+                opt_feedback: "Feedback & Suggestions",
+                lbl_message: "Your Message / Idea *",
+                btn_send_msg: "Send Message",
+                map_badge: "Visit Us",
+                map_title: "Experience the Smart Furniture Live",
+                map_desc: "Visit our showroom to see smooth mechanism transformations and consult directly with our spatial engineering team."
+            },
+            am: {
+                nav_home: "ዋና ገጽ",
+                nav_products: "ምርቶቻችን",
+                nav_about: "ስለ እኛ",
+                nav_contact: "ያግኙን",
+                nav_explore: "አሁን ይጠይቁ",
+                hero_badge: "የእንጨት ቴክኖሎጂ እና ዘመናዊ ህይወት",
+                hero_title: "ህይወትዎን ቀላል እና ዘመናዊ ለማድረግ እዚህ እንገኛለን።",
+                hero_desc: "የላቀ የእንጨት ቴክኖሎጂን በመጠቀም ቦታ ቆጣቢ እና ባለብዙ አገልግሎት የቤት እቃዎችን ለምቾትዎ በጥራት እናዘጋጃለን።",
+                hero_btn_products: "ምርቶችን ይመልከቱ",
+                hero_btn_story: "ታሪካችን",
+                concept_title: "Multi-Functional Furniture ምንድን ነው?",
+                concept_subtitle: "ባለብዙ አገልግሎት የቤት እቃዎች ኢንጂነሪንግን እና ዘመናዊ የእንጨት ስራን በማቀናጀት አንድን እቃ ለብዙ አገልግሎት እንዲያውሉ የሚያስችል የቦታ ጥበት መፍትሄ ነው።",
+                feature_1_title: "ቦታን በአግባቡ መጠቀም",
+                feature_1_desc: "የሚቀየሩ ጠረጴዛዎችን እና ድብቅ የጓዳ ቦታዎችን በመጠቀም አነስተኛ ክፍሎችን ወደ ሰፊ ቦታ መቀየር።",
+                feature_2_title: "የላቀ የእንጨት ቴክኖሎጂ",
+                feature_2_desc: "ዘመናዊ የእንጨት ማቀነባበሪያ እና ከፍተኛ ጥራት ያላቸውን ጥሬ እቃዎች በመጠቀም ዘላቂና ምቹ ተደርገው የተሰሩ።",
+                feature_3_title: "ወጪ ቆጣቢነት",
+                feature_3_desc: "በርካታ የቤት እቃዎችን ከመግዛት ይልቅ አንድ ባለብዙ አገልግሎት እቃ በመግዛት ወጪዎን ይቆጥቡ።",
+                link_to_about_btn: "ስለ እኛ የበለጠ ይወቁ",
+                teaser_badge: "የፈጠራ ምርቶቻችን",
+                teaser_title: "የምርቶቻችን ቅንጭብ ማሳያ",
+                teaser_subtitle: "ለዘመናዊ መኖሪያዎች እና ቢሮዎች የተሰሩ ጥቂት ቦታ ቆጣቢ የቤት እቃዎቻችን ማሳያ።",
+                prod_1_title: "ባለብዙ አገልግሎት የመዋቢያ ጠረጴዛ ከአልጋ ጋር",
+                prod_1_desc: "በስታይል የተሰራ የመዋቢያ ጠረጴዛ እንዲሁም ምቹ አልጋ ሆኖ የሚያገለግል፣ ለትንሽ ቦታዎች ተስማሚ።",
+                prod_2_title: "የታመቀ የመዋቢያ ጠረጴዛ እና የጥናት ዴስክ",
+                prod_2_desc: "የመዋቢያ ጠረጴዛን ከተግባራዊ የጥናት ዴስክ ጋር የሚያጣምር ቦታ ቆጣቢ መፍትሄ።",
+                rate_this: "ደረጃ ይስጡት:",
+                view_in_catalog: "ሙሉውን በካታሎግ ይመልከቱ",
+                why_badge: "አላማችን",
+                why_title: "ለምን እነዚህ ምርቶች ላይ ትኩረት አደረግን?",
+                why_desc_1: "የአሁኑ ዘመን የኑሮ ቦታዎች እየጠበቡ ስለመጡ የቤት እቃዎቻችንም አብረው መዘመን አለባቸው። በ webet ውበት እና አገልጋይነት ጎን ለጎን መሄድ አለባቸው ብለን እናምናለን።",
+                why_desc_2: "የ webet መስራቾች ድርጅቱን የጀመሩት የእርስዎን የአኗኗር ዘይቤ የሚያቃልሉ ዘመናዊና ቦታ ቆጣቢ የቤት እቃዎችን በጥራት ለደንበኞች ለማቅረብ ነው።",
+                link_to_about: "ስለ እኛ የበለጠ ያንብቡ",
+                why_img_caption: "የላቀ ጥበብ እና ዘመናዊ የውስጥ ዲዛይን ቅንጅት።",
+                footer_slogan: "የእንጨት ቴክኖሎጂ እና ባለብዙ አገልግሎት የቤት እቃዎች",
+                page_banner_badge: "ዘመናዊ ቦታ ቆጣቢ የፈጠራ ስራዎች",
+                page_banner_title: "የምርቶቻችን ዝርዝር ካታሎግ",
+                page_banner_desc: "የእያንዳንዱን ምርት አሰራር በቪዲዮ ይመልከቱ፣ በ 3 የተለያዩ የፎቶ አቅጣጫዎች ይቃኙ፣ የደንበኞችን ደረጃ ይወቁ እና በቀጥታ ይዘዙ።",
+                video_label: "የምርቱ የአሰራር ቪዲዮ ማሳያ",
+                gallery_label: "የምርቱ 3 አቅጣጫ ምስሎች",
+                gallery_hint: "ትልቁን ምስል ለመቀየር ምስሎቹን ይጫኑ",
+                rate_label: "የደንበኞች እርካታ ደረጃ:",
+                desc_heading: "የምርቱ ሙሉ መረጃ:",
+                btn_order: "ይህንን እቃ ይዘዙ (Order)",
+                btn_contact: "ያግኙን (Contact Us)",
+                p1_full_desc: "ይህ የሚያምር የመዋቢያ ጠረጴዛ ከመዋቢያነት ባለፈ የተደበቀ አልጋ አለው ይህም ቦታዎን በሰከንዶች ውስጥ ይለውጣል። ለስቱዲዮ ክፍሎች እና ለእንግዳ ክፍሎች ተስማሚ ነው፣ ዘይቤን ከአገልግሎት ጋር ያጣምራል።",
+                p1_feat1: "ትልቅ መስታወት እና የማከማቻ መሳቢያዎች ያሉት ዘመናዊ የመዋቢያ ጠረጴዛ",
+                p1_feat2: "በቀላሉ ለመቀየር የተደበቀ የሚጎተት አልጋ ስርዓት",
+                p1_feat3: "ከፍተኛ ጥራት ያለው የእንጨት አጨራረስ ከጭረት መከላከያ ሽፋን ጋር",
+                p2_full_desc: "ይህ ሁለገብ እቃ እንደ ተግባራዊ የመዋቢያ ጠረጴዛ እና እንደ የጥናት ዴስክ ሆኖ ያገለግላል። የታመቀ ዲዛይኑ ለትንሽ መኝታ ቤቶች፣ ለዶርሞች ወይም ለብዙ አገልግሎት ክፍሎች ተስማሚ ያደርገዋል።",
+                p2_feat1: "ሁለት ዓላማ ያለው ዲዛይን፡ የመዋቢያ ጠረጴዛ እና የጥናት ዴስክ",
+                p2_feat2: "ለመዋቢያ እቃዎች እና ለጥናት ቁሳቁሶች የተገነቡ የማከማቻ ክፍሎች",
+                p2_feat3: "ዘላቂ እና ለማጽዳት ቀላል የሆነ ዘመናዊ ሽፋን ያለው",
+                hero_badge_about: "የመኖሪያ ቦታዎችን የወደፊት ተስፋ መቅረፅ",
+                hero_title_about: "የቦታ ጥበትን በቴክኖሎጂ መፍታት",
+                hero_desc_about: "የቦታ ወሰኖችን የማስወገድ ራዕይ እንዴት ወደ ፈር ቀዳጅ የዘመናዊ እንጨት ቴክኖሎጂ እንቅስቃሴ እንደተቀየረ።",
+                gen_badge: "የመነሻ ታሪካችን",
+                gen_title: "ከፍላጎት የተወለደ የጋራ ራዕይ",
+                gen_p1: "የቤትና የመሬት ዋጋ በከፍተኛ ሁኔታ በሚጨምርበት እና የመኖሪያ ቦታዎች በሚጠበቡበት በዚህ ዘመን፣ የመስራቾቹ አእምሮ አንድ ትልቅ ቅራኔ አስተዋለ፡ አኗኗራችን ዘመናዊና ፈጣን እየሆነ ሲመጣ የቤት እቃዎቻችን ግን አሁንም ቦታ የሚይዙ እና የማይለዋወጡ ነበሩ።",
+                gen_p2: "ይህንን ችግር ለመፍታት የተደረገ ውይይት በፍጥነት ወደ ምርምር እና ፈጠራ አደገ። መስራቾቹ አንድ ክፍል ለአንድ አገልግሎት ብቻ መወሰን የለበትም የሚል እምነት ያዙ። በዚህም webet Smart Wood Technology የላቀ የእንጨት ጥበብን ከዘመናዊ ኢንጂነሪንግ ጋር በማጣመር ተመሠረተ።",
+                gen_card_text: "በጥንቃቄ የተቀናጁ ተቀያያሪ የእንጨት መገጣጠሚያዎች።",
+                diff_badge: "ለምን እኛን ይመርጣሉ?",
+                diff_title: "ከሌሎች ገበያዎች በምን እንለያለን?",
+                diff_desc: "እኛ የቤት እቃዎችን ብቻ አንሰራም፤ ለዘመናዊ ህይወት የሚሆን ቦታ ቆጣቢ የቴክኖሎጂ ሲስተሞችን እንቀርጻለን።",
+                diff1_title: "3-በ-1 ባለብዙ አገልግሎት",
+                diff1_desc: "ከተለመዱት የማይቀየሩ እቃዎች በተለየ፣ የእኛ ምርቶች ወደተለያዩ አገልግሎቶች በመቀየር እስከ 60% የክፍል ቦታ ይቆጥባሉ።",
+                diff2_title: "የተጠናከሩ የሃይድሮሊክ መገጣጠሚያዎች",
+                diff2_desc: "ከ10,000 ጊዜ በላይ ያለ ምንም ችግር ሊከፈቱና ሊዘጋጉ የሚችሉ አስተማማኝ የሜካኒካል መገጣጠሚያዎች ያሏቸው ናቸው።",
+                diff3_title: "ዘላቂ የእንጨት ኢንጂነሪንግ",
+                diff3_desc: "ጥራት ያላቸውን ጥንካሬ ያላቸው እንጨቶች ከአየር ንብረት ተጽዕኖ ጋር ከሚቋቋሙ ዘመናዊ ግበዓቶች ጋር አዋህደን እንሰራለን።",
+                diff4_title: "በዲጂታል የታገዘ ምርጫ",
+                diff4_desc: "ደንበኞች እንደ አፓርትመንታቸው ስፋት እና ፍላጎት መጠን በዲጂታል መንገድ መርጠው የሚያዙበት ቀልጣፋ አሰራር።",
+                data_badge: "በመረጃ የተደገፈ የገበያ እውነታ",
+                data_title: "ስማርት የቤት እቃዎች ለምን አስፈላጊ ሆኑ?",
+                data_desc: "የዓለም አቀፍ የከተሞች ዕድገት መረጃዎች የአኗኗር ዘይቤ መቀየሩን ያሳያሉ። እኛም የኢንጂነሪንግ ስራችንን ዓለም አቀፍ መረጃዎችን መሰረት አድርገን እንሰራለን።",
+                stat1_title: "የዓለም አቀፍ ገበያ መጠን",
+                stat1_desc: "እ.ኤ.አ በ2030 የብዙ-አገልግሎት የቤት እቃዎች ገበያ ይደርሳል ተብሎ የሚጠበቅበት።",
+                stat2_title: "የከተሞች ህዝብ ጥግግት",
+                stat2_desc: "በ2050 ወደ ከተሞች ይኖራል ተብሎ የሚገመተው የዓለም ህዝብ ድርሻ።",
+                stat3_title: "የቦታ ቁጠባ መጠን",
+                stat3_desc: "የ webet ተቀያያሪ እቃዎችን በመጠቀም የሚቆጠብ አማካይ የክፍል ስፋት።",
+                stat4_title: "የጥንካሬ ዘላቂነት",
+                stat4_desc: "በከፍተኛ ፍተሻ ያለፉ የሜካኒካል እና የሳንባ ምች (pneumatic) መገጣጠሚያዎች እድሜ።",
+                plan_badge: "ስትራቴጂካዊ ራዕይ",
+                plan_title: "የአጭር እና የረጅም ጊዜ እቅዶች",
+                st_title: "የአጭር ጊዜ እቅዶች (1 - 2 ዓመታት)",
+                st_1: "ለአፓርትመንቶች ተስማሚ የሆኑ 5 ዋና ዋና ተቀያያሪ የምርት አይነቶችን ማቅረብ።",
+                st_2: "የቀጥታ ትዕዛዝ እና የማድረሻ ስርአት ያለው ዲጂታል ሾውሩም ማደራጀት።",
+                st_3: "ከአርክቴክቶች እና ከሪል እስቴት አልሚዎች ጋር በጋራ መስራት።",
+                lt_title: "የረጅም ጊዜ ራዕይ (3 - 5 ዓመታት)",
+                lt_1: "የቤት እቃዎች መገጣጠሚያ ማምረቻዎችን በሮቦቲክስ አውቶሜት ማድረግ።",
+                lt_2: "በድምፅ እና በስልክ አፕሊኬሽን የሚከፈቱ IoT ስማርት ሴንሰሮችን መግጠም።",
+                lt_3: "በምስራቅ አፍሪካ ዋና ዋና ከተሞች የእንቅስቃሴ መረብ መዘርጋት።",
+                hero_badge_contact: "እኛን ያግኙን",
+                hero_title_contact: "ከቡድናችን ጋር ይገናኙ",
+                hero_desc_contact: "የምርት ትዕዛዝዎን ያስገቡ ወይም ቦታዎን ስለመቀየር ከእኛ ጋር ይወያዩ።",
+                info_loc_title: "ዋና ሾውሩም",
+                info_loc_desc: "ቦሌ መንገድ፣ ፍሬንድሺፕ አጠገብ፣ አዲስ አበባ፣ ኢትዮጵያ",
+                info_phone_title: "ስልክ ቁጥር",
+                info_email_title: "ኢሜይል",
+                info_hours_title: "የስራ ሰዓት",
+                info_hours_desc: "ሰኞ - ቅዳሜ: ከጠዋቱ 2:30 - ከሰዓት 12:30",
+                info_hours_sub: "እሁድ ዝግ ነው",
+                tab_order: "1. የምርት ትዕዛዝ",
+                tab_general: "2. አጠቃላይ ጥያቄ እና ሃሳብ",
+                lbl_selected_product: "የተመረጠው ምርት",
+                btn_browse_catalog: "ምርቶችን ይመልከቱ",
+                opt_select_product: "-- ከዝርዝሩ ምርት ይምረጡ --",
+                lbl_fullname: "ሙሉ ስም *",
+                lbl_phone: "ስልክ ቁጥር *",
+                lbl_email: "ኢሜይል አድራሻ",
+                lbl_quantity: "ብዛት",
+                lbl_custom_note: "ልዩ ልኬት / ተጨማሪ ማብራሪያ",
+                btn_submit_order: "ትዕዛዝ አብስር/ላክ",
+                lbl_subject: "የጉዳዩ ዓይነት",
+                opt_general: "አጠቃላይ ጥያቄ",
+                opt_partner: "የስራ አጋርነት / ኢንቨስትመንት",
+                opt_custom: "የልዩ ዲዛይን ማማከር",
+                opt_feedback: "አስተያየት እና አስተያየት",
+                lbl_message: "መልዕክትዎ ወይም ሃሳብዎ *",
+                btn_send_msg: "መልዕክት ላክ",
+                map_badge: "ይጎብኙን",
+                map_title: "ስማርት የቤት እቃዎችን በአካል ይመልከቱ",
+                map_desc: "በአካል ወደ ሾውሩማችን በመምጣት የሜካኒካል ተቀያያሪዎችን እንቅስቃሴ ይመልከቱ፣ ከኢንጂነሮቻችን ጋር ይማከሩ።"
+            }
+        };
+
+        let currentLang = 'en';
+        const langToggleBtn = document.getElementById('langToggleBtn');
+        const currentLangLabel = document.getElementById('currentLangLabel');
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'am' : 'en';
+            currentLangLabel.innerText = currentLang === 'en' ? 'AM' : 'EN';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+        });
+
+        // Initialize language to English
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations.en[key]) {
+                el.innerText = translations.en[key];
+            }
+        });
+        currentLangLabel.innerText = 'AM';
+
+        // ---------- Contact: product dropdown fallback ----------
+        document.getElementById('productDropdown')?.addEventListener('change', function() {
+            const input = document.getElementById('selectedProductInput');
+            if (this.value) {
+                input.value = this.value;
+                input.classList.remove('hidden');
+            } else {
+                input.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
